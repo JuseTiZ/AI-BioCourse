@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作业 2 &mdash; AI-BioCourse v0.1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f17d22cc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="作业 1" href="task1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AI-BioCourse
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">课程介绍</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../task.html">课程作业</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="task1.html">作业 1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">作业 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">数据文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">关于独热编码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">挑选基因</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">参考材料</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">思考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI-BioCourse</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../task.html">课程作业</a></li>
+      <li class="breadcrumb-item active">作业 2</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/task/task2.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>作业 2<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>该作业的主要目的是<strong>基于生物学数据进行数据的预处理，并通过线性模型完成指定生物学任务</strong>。</p>
+<img src="..\_static\images\q2.png" height="400px" />
+<p>在作业附件中，有提供数据文件 <code class="docutils literal notranslate"><span class="pre">sgRNA_data.tsv</span></code>，你可将其移动至与 jupyter notebook 文件相同的文件夹并通过 pandas 库对其进行读取：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./sgRNA_data.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id2">
+<h2>数据文件<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>该文件中需关注的列及其含义分别如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sgRNA_Context</span></code>：sgRNA + context，从<strong>第五个碱基开始到第二十五个碱基</strong>为 sgRNA 的序列（可以通过字符串切片操作将其挑取出来）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Target_Gene</span></code>：该 sgRNA 靶向的基因。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sgRNA_Activity</span></code>：sgRNA 的编辑效果，为本次作业的预测目标。</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>关于独热编码<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>独热编码（One-Hot encoding）是一种常用的分类变量处理方法，其思路是将每个类别值转换为一个二进制向量：</p>
+<ul class="simple">
+<li><p>创建一个长度为类别总数的向量。</p></li>
+<li><p>对于各类别所对应的位置标记为 1，其余位置标记为 0。</p></li>
+</ul>
+<p>以该作业的情况为例，在使用单碱基独热编码时，共四种情况：</p>
+<img src="E:\AI-BioCourse\source\_static\images\q2_onehot.png" height="400px" />
+<p>其中，四种碱基 <code class="docutils literal notranslate"><span class="pre">A</span></code> <code class="docutils literal notranslate"><span class="pre">C</span></code> <code class="docutils literal notranslate"><span class="pre">G</span></code> <code class="docutils literal notranslate"><span class="pre">T</span></code> 分别对应一个长度为 4 的向量，并仅在一个位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 <code class="docutils literal notranslate"><span class="pre">ACG</span></code>），可<strong>将其所有的碱基转换为向量并串联，即可得到该序列对应的独热编码结果</strong>。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。注意，二碱基独热编码时，相邻的二碱基是有重叠的：</p>
+<img src="E:\AI-BioCourse\source\_static\images\q2_onehot_twoorder.png" height="400px" />
+<p>为了得到 sgRNA 序列的独热编码结果，你可以使用字典保存每一种单碱基（二碱基）和对应向量的关系，通过 <code class="docutils literal notranslate"><span class="pre">for</span></code> 循环遍历该序列的单碱基（二碱基）并将把对应向量保存至同一个列表中，最后使用 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 的 <code class="docutils literal notranslate"><span class="pre">concatenate</span></code> 将其串联至一起：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">one_hot_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">]</span> <span class="c1"># 假设这为你已得到的 sgRNA 序列编码（单碱基）</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">one_hot_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">array([1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0])</span>
+</pre></div>
+</div>
+<p>具体的实现方式非常多，以上只是其中的一个思路，仅作参考用。</p>
+</section>
+<section id="id4">
+<h2>挑选基因<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>该作业使用留一基因法进行验证，其他在生物学中常见的类似操作还有留一染色体验证，留一个体验证等。某些场景下，这种计算方式能更准确地评估模型的泛化能力并指导模型选择。</p>
+<p>你可以通过 <code class="docutils literal notranslate"><span class="pre">random</span></code> 或 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 库随机挑选一个基因，也可自行挑选。作为拓展，如果你感兴趣，也可以试试通过留一基因交叉验证生成一个折外预测集（out-of-fold）进行模型评估。</p>
+</section>
+<section id="id5">
+<h2>参考材料<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>数据框的处理可参考 <a class="reference external" href="https://www.runoob.com/pandas/pandas-dataframe.html">Pandas 数据结构 - DataFrame</a>，矩阵的处理和转换可参考 <a class="reference external" href="https://www.runoob.com/numpy/numpy-tutorial.html">NumPy 教程</a>。</p></li>
+<li><p>线性模型的使用可参考 scikit-learn 页面：<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">LinearRegression</a> / <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">Lasso</a>。</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>思考<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>独热编码的优点有哪些？缺点有哪些？</p></li>
+<li><p>Lasso 中 Alpha 的值不同时，模型表现会发生怎样的变化？</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="task1.html" class="btn btn-neutral float-left" title="作业 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, SYSU。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

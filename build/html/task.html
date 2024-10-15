@@ -23,6 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="作业 1" href="task/task1.html" />
     <link rel="prev" title="课程介绍" href="introduction.html" /> 
 </head>
 
@@ -49,15 +50,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">课程介绍</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">课程作业</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">作业 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">作业 2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">数据文件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">关于独热编码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">挑选基因</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">参考材料</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">思考</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="task/task1.html">作业 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task/task2.html">作业 2</a></li>
 </ul>
 </li>
 </ul>
@@ -88,12 +82,12 @@
              
   <section id="id1">
 <h1>课程作业<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p>关于 Python，可以参考以下在线资料或书籍：</p>
+<p>关于 Python 的操作，可以参考以下在线资料或书籍：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.runoob.com/python3/python3-tutorial.html">https://www.runoob.com/python3/python3-tutorial.html</a></p></li>
 <li><p><a class="reference external" href="https://book.douban.com/subject/35196328/">Python编程：从入门到实践（第2版）</a></p></li>
 </ul>
-<p><strong>不推荐使用 ChatGPT 等工具直接生成答案</strong>，作业的重点在于理解和培养编程思维，每一个作业都不存在标准答案。如发现 AI 作答将视情况扣分。某些特定的代码操作（例如数据处理等）和报错信息可以询问 AI 以得知具体解决方法：</p>
+<p><strong>不推荐使用 ChatGPT 等工具直接生成答案</strong>，作业的重点在于理解和培养编程思维，每一个作业都不存在标准答案。如发现 AI 作答将视情况扣分。某些特定的代码操作（例如数据处理等）和报错信息可以询问 AI 以得知具体解决方法，以下为示例：</p>
 <blockquote>
 <div><p>Q：Python DataFrame 如何提取出某列的所有独特值？</p>
 <p>A：你可以使用 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 方法来提取某列的所有独特值。以下是一个示例：</p>
@@ -121,78 +115,13 @@
 </pre></div>
 </div>
 </div></blockquote>
-<section id="id2">
-<h2>作业 1<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>该作业的主要目的是熟悉 python 的基本操作，包括<strong>类的构建、实例化、重写</strong>及<strong>具体方法的实现</strong>。</p>
-<img src="_static/images/q1.png" height="400px" />
-<p>关于类的概念和实现可参考：<a class="reference external" href="https://www.runoob.com/python3/python3-class.html">https://www.runoob.com/python3/python3-class.html</a></p>
-<p>关于独热编码的概念和实现可参见下述作业 2。</p>
-</section>
-<section id="id3">
-<h2>作业 2<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
-<p>该作业的主要目的是<strong>基于生物学数据进行数据的预处理，并通过线性模型完成指定生物学任务</strong>。</p>
-<img src="_static/images/q2.png" height="400px" />
-<p>在作业附件中，有提供数据文件 <code class="docutils literal notranslate"><span class="pre">sgRNA_data.tsv</span></code>，你可将其移动至与 jupyter notebook 文件相同的文件夹并通过 pandas 库对其进行读取：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./sgRNA_data.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">作业目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="task/task1.html">作业 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task/task2.html">作业 2</a></li>
+</ul>
 </div>
-<section id="id4">
-<h3>数据文件<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<p>该文件中需关注的列及其含义分别如下：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sgRNA_Context</span></code>：sgRNA + context，从<strong>第五个碱基开始到第二十五个碱基</strong>为 sgRNA 的序列（可以通过字符串切片操作将其挑取出来）。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Target_Gene</span></code>：该 sgRNA 靶向的基因。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sgRNA_Activity</span></code>：sgRNA 的编辑效果，为本次作业的预测目标。</p></li>
-</ul>
-</section>
-<section id="id5">
-<h3>关于独热编码<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
-<p>独热编码（One-Hot encoding）是一种常用的分类变量处理方法，其思路是将每个类别值转换为一个二进制向量：</p>
-<ul class="simple">
-<li><p>创建一个长度为类别总数的向量。</p></li>
-<li><p>对于各类别所对应的位置标记为 1，其余位置标记为 0。</p></li>
-</ul>
-<p>以该作业的情况为例，在使用单碱基独热编码时，共四种情况：</p>
-<img src="_static/images/q2_onehot.png" height="400px" />
-<p>其中，四种碱基 <code class="docutils literal notranslate"><span class="pre">A</span></code> <code class="docutils literal notranslate"><span class="pre">C</span></code> <code class="docutils literal notranslate"><span class="pre">G</span></code> <code class="docutils literal notranslate"><span class="pre">T</span></code> 分别对应一个长度为 4 的向量，并仅在一个对应位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 <code class="docutils literal notranslate"><span class="pre">ACG</span></code>），可将其所有的碱基转换为对应向量并串联，即可得到该序列对应的独热编码结果。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。</p>
-<p>为了得到每条 sgRNA 序列的独热编码结果，你可以使用字典保存每一种单碱基（二碱基）和对应向量的关系，通过 <code class="docutils literal notranslate"><span class="pre">for</span></code> 循环遍历该序列的单碱基（二碱基）并将把对应向量保存至同一个列表中，最后使用 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 的 <code class="docutils literal notranslate"><span class="pre">concatenate</span></code> 将其串联至一起，以下是一个示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">one_hot_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="p">]</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">one_hot_list</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">array([1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0])</span>
-</pre></div>
-</div>
-<p>具体的实现方式非常多，以上只是其中的一个思路，仅作参考用。</p>
-</section>
-<section id="id6">
-<h3>挑选基因<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>该作业使用留一基因法进行验证，其他在生物学中常见的类似操作还有留一染色体验证，留一个体验证等。某些场景下，这种计算方式能更准确地评估模型的泛化能力。</p>
-<p>你可以通过 random 或 numpy 库随机挑选一个基因，也可自行挑选。作为拓展，如果你感兴趣，也可以试试通过留一基因交叉验证生成一个折外预测集（out-of-fold）进行模型评估。</p>
-</section>
-<section id="id7">
-<h3>参考材料<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>数据框的处理可参考 <a class="reference external" href="https://www.runoob.com/pandas/pandas-dataframe.html">Pandas 数据结构 - DataFrame</a>，矩阵的处理和转换可参考 <a class="reference external" href="https://www.runoob.com/numpy/numpy-tutorial.html">NumPy 教程</a>。</p></li>
-<li><p>线性模型的使用可参考 scikit-learn 页面：<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">LinearRegression</a> / <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">Lasso</a>。</p></li>
-</ul>
-</section>
-<section id="id8">
-<h3>思考<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>独热编码的优点有哪些？缺点有哪些？</p></li>
-<li><p>Lasso 中 Alpha 的值不同时，模型表现会发生怎样的变化？</p></li>
-</ul>
-</section>
-</section>
 </section>
 
 
@@ -200,6 +129,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
         <a href="introduction.html" class="btn btn-neutral float-left" title="课程介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="task/task1.html" class="btn btn-neutral float-right" title="作业 1" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
