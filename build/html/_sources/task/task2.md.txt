@@ -28,11 +28,11 @@ data = pd.read_csv("./sgRNA_data.tsv", sep="\t")
 
 以该作业的情况为例，在使用单碱基独热编码时，共四种情况：
 
-<img src="E:\AI-BioCourse\source\_static\images\q2_onehot.png" height="400px" />
+<img src="..\_static\images\q2_onehot.png" height="400px" />
 
 其中，四种碱基 `A` `C` `G` `T` 分别对应一个长度为 4 的向量，并仅在一个位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 `ACG`），可**将其所有的碱基转换为向量并串联，即可得到该序列对应的独热编码结果**。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。注意，二碱基独热编码时，相邻的二碱基是有重叠的：
 
-<img src="E:\AI-BioCourse\source\_static\images\q2_onehot_twoorder.png" height="400px" />
+<img src="..\_static\images\q2_onehot_twoorder.png" height="400px" />
 
 为了得到 sgRNA 序列的独热编码结果，你可以使用字典保存每一种单碱基（二碱基）和对应向量的关系，通过 `for` 循环遍历该序列的单碱基（二碱基）并将把对应向量保存至同一个列表中，最后使用 `numpy` 的 `concatenate` 将其串联至一起：
 
