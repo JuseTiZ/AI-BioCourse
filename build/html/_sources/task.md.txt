@@ -52,7 +52,7 @@
 
 <img src="_static/images/q2.png" height="400px" />
 
-在作业附件中，有提供数据文件 `sgRNA_data.tsv`，你可将其移动至与 jupyter notebook 文件相同的文件夹并通过 pandas 库对其进行读取
+在作业附件中，有提供数据文件 `sgRNA_data.tsv`，你可将其移动至与 jupyter notebook 文件相同的文件夹并通过 pandas 库对其进行读取：
 
 ```python
 import pandas as pd
@@ -78,17 +78,24 @@ data = pd.read_csv("./sgRNA_data.tsv", sep="\t")
 
 <img src="_static/images/q2_onehot.png" height="400px" />
 
-其中，四种碱基 `A` `C` `T` `G` 分别对应一个长度为 4 的向量，并仅在一个对应位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 `ACT`），可将其所有的碱基转换为对应向量并串联，即可得到该序列对应的独热编码结果。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。
+其中，四种碱基 `A` `C` `G` `T` 分别对应一个长度为 4 的向量，并仅在一个对应位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 `ACG`），可将其所有的碱基转换为对应向量并串联，即可得到该序列对应的独热编码结果。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。
 
 为了得到每条 sgRNA 序列的独热编码结果，你可以使用字典保存每一种单碱基（二碱基）和对应向量的关系，通过 `for` 循环遍历该序列的单碱基（二碱基）并将把对应向量保存至同一个列表中，最后使用 `numpy` 的 `concatenate` 将其串联至一起，以下是一个示例：
 
 ```python
 import numpy as np
-np.concatenate([[0, 1], [1, 2]])
+
+one_hot_list = [
+    [1, 0, 0, 0],
+    [0, 0, 0, 1],
+    [0, 1, 0, 0]
+]
+
+np.concatenate(one_hot_list)
 ```
 
 ```output
-array([0, 1, 1, 2])
+array([1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0])
 ```
 
 具体的实现方式非常多，以上只是其中的一个思路，仅作参考用。
@@ -97,9 +104,15 @@ array([0, 1, 1, 2])
 
 该作业使用留一基因法进行验证，其他在生物学中常见的类似操作还有留一染色体验证，留一个体验证等。某些场景下，这种计算方式能更准确地评估模型的泛化能力。
 
-你可以通过 random 或 numpy 库随机挑选一个基因，也可自行挑选。作为拓展，如果你感兴趣，也可以试试通过交叉验证生成一个折外预测集（out-of-fold）进行模型评估。
+你可以通过 random 或 numpy 库随机挑选一个基因，也可自行挑选。作为拓展，如果你感兴趣，也可以试试通过留一基因交叉验证生成一个折外预测集（out-of-fold）进行模型评估。
+
+#### 参考材料
+
+- 数据框的处理可参考 [Pandas 数据结构 - DataFrame](https://www.runoob.com/pandas/pandas-dataframe.html)，矩阵的处理和转换可参考 [NumPy 教程](https://www.runoob.com/numpy/numpy-tutorial.html)。
+- 线性模型的使用可参考 scikit-learn 页面：[LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) / [Lasso](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html)。
 
 #### 思考
 
 - 独热编码的优点有哪些？缺点有哪些？
+- Lasso 中 Alpha 的值不同时，模型表现会发生怎样的变化？
 

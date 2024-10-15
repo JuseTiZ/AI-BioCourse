@@ -53,7 +53,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">数据文件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">关于独热编码</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">挑选基因</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">思考</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">参考材料</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">思考</a></li>
 </ul>
 </li>
 </ul>
@@ -130,7 +131,7 @@
 <h2>作业 2<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <p>该作业的主要目的是<strong>基于生物学数据进行数据的预处理，并通过线性模型完成指定生物学任务</strong>。</p>
 <img src="_static/images/q2.png" height="400px" />
-<p>在作业附件中，有提供数据文件 <code class="docutils literal notranslate"><span class="pre">sgRNA_data.tsv</span></code>，你可将其移动至与 jupyter notebook 文件相同的文件夹并通过 pandas 库对其进行读取</p>
+<p>在作业附件中，有提供数据文件 <code class="docutils literal notranslate"><span class="pre">sgRNA_data.tsv</span></code>，你可将其移动至与 jupyter notebook 文件相同的文件夹并通过 pandas 库对其进行读取：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./sgRNA_data.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -153,13 +154,20 @@
 </ul>
 <p>以该作业的情况为例，在使用单碱基独热编码时，共四种情况：</p>
 <img src="_static/images/q2_onehot.png" height="400px" />
-<p>其中，四种碱基 <code class="docutils literal notranslate"><span class="pre">A</span></code> <code class="docutils literal notranslate"><span class="pre">C</span></code> <code class="docutils literal notranslate"><span class="pre">T</span></code> <code class="docutils literal notranslate"><span class="pre">G</span></code> 分别对应一个长度为 4 的向量，并仅在一个对应位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 <code class="docutils literal notranslate"><span class="pre">ACT</span></code>），可将其所有的碱基转换为对应向量并串联，即可得到该序列对应的独热编码结果。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。</p>
+<p>其中，四种碱基 <code class="docutils literal notranslate"><span class="pre">A</span></code> <code class="docutils literal notranslate"><span class="pre">C</span></code> <code class="docutils literal notranslate"><span class="pre">G</span></code> <code class="docutils literal notranslate"><span class="pre">T</span></code> 分别对应一个长度为 4 的向量，并仅在一个对应位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 <code class="docutils literal notranslate"><span class="pre">ACG</span></code>），可将其所有的碱基转换为对应向量并串联，即可得到该序列对应的独热编码结果。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。</p>
 <p>为了得到每条 sgRNA 序列的独热编码结果，你可以使用字典保存每一种单碱基（二碱基）和对应向量的关系，通过 <code class="docutils literal notranslate"><span class="pre">for</span></code> 循环遍历该序列的单碱基（二碱基）并将把对应向量保存至同一个列表中，最后使用 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 的 <code class="docutils literal notranslate"><span class="pre">concatenate</span></code> 将其串联至一起，以下是一个示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+
+<span class="n">one_hot_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">one_hot_list</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">array([0, 1, 1, 2])</span>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">array([1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0])</span>
 </pre></div>
 </div>
 <p>具体的实现方式非常多，以上只是其中的一个思路，仅作参考用。</p>
@@ -167,12 +175,20 @@
 <section id="id6">
 <h3>挑选基因<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>该作业使用留一基因法进行验证，其他在生物学中常见的类似操作还有留一染色体验证，留一个体验证等。某些场景下，这种计算方式能更准确地评估模型的泛化能力。</p>
-<p>你可以通过 random 或 numpy 库随机挑选一个基因，也可自行挑选。作为拓展，如果你感兴趣，也可以试试通过交叉验证生成一个折外预测集（out-of-fold）进行模型评估。</p>
+<p>你可以通过 random 或 numpy 库随机挑选一个基因，也可自行挑选。作为拓展，如果你感兴趣，也可以试试通过留一基因交叉验证生成一个折外预测集（out-of-fold）进行模型评估。</p>
 </section>
 <section id="id7">
-<h3>思考<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<h3>参考材料<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>数据框的处理可参考 <a class="reference external" href="https://www.runoob.com/pandas/pandas-dataframe.html">Pandas 数据结构 - DataFrame</a>，矩阵的处理和转换可参考 <a class="reference external" href="https://www.runoob.com/numpy/numpy-tutorial.html">NumPy 教程</a>。</p></li>
+<li><p>线性模型的使用可参考 scikit-learn 页面：<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">LinearRegression</a> / <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">Lasso</a>。</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>思考<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>独热编码的优点有哪些？缺点有哪些？</p></li>
+<li><p>Lasso 中 Alpha 的值不同时，模型表现会发生怎样的变化？</p></li>
 </ul>
 </section>
 </section>
