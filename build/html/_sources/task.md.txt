@@ -40,7 +40,7 @@
 
 该作业的主要目的是熟悉 python 的基本操作，包括**类的构建、实例化、重写**及**具体方法的实现**。
 
-<img src="./q1.png" height="400px" />
+<img src="_static/images/q1.png" height="400px" />
 
 关于类的概念和实现可参考：[https://www.runoob.com/python3/python3-class.html](https://www.runoob.com/python3/python3-class.html)
 
@@ -50,7 +50,7 @@
 
 该作业的主要目的是**基于生物学数据进行数据的预处理，并通过线性模型完成指定生物学任务**。
 
-<img src="./q2.png" height="400px" />
+<img src="_static/images/q2.png" height="400px" />
 
 在作业附件中，有提供数据文件 `sgRNA_data.tsv`，你可将其移动至与 jupyter notebook 文件相同的文件夹并通过 pandas 库对其进行读取
 
@@ -76,7 +76,7 @@ data = pd.read_csv("./sgRNA_data.tsv", sep="\t")
 
 以该作业的情况为例，在使用单碱基独热编码时，共四种情况：
 
-<img src="./q2_onehot.png" height="400px" />
+<img src="_static/images/q2_onehot.png" height="400px" />
 
 其中，四种碱基 `A` `C` `T` `G` 分别对应一个长度为 4 的向量，并仅在一个对应位置上为 1（其他皆为 0）。对于一段序列（例如上图中的 `ACT`），可将其所有的碱基转换为对应向量并串联，即可得到该序列对应的独热编码结果。对于二碱基独热编码同理，共有 16 种可能的二碱基组合，其中每一种组合都对应一个长度为 16 的向量。
 
