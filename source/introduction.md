@@ -59,7 +59,6 @@
 
 - 组队时建议数学、编程相互补充
 
-
 **成绩评定**
 
 - 上课考勤占总成绩的 10%
@@ -75,20 +74,18 @@
   <tr>
     <td align="center">
       <img src="_static/images/t1.png" width="150px" style="margin: 0 25px;"><br>
-      <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1029">李彩</a>
+      <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1029" style="margin-top: 15px; display: inline-block;">李彩</a>
     </td>
     <td align="center">
       <img src="_static/images/t2.png" width="150px" style="margin: 0 25px;"><br>
-      <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1751">阮永森</a>
+      <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1751" style="margin-top: 15px; display: inline-block;">阮永森</a>
     </td>
     <td align="center">
       <img src="_static/images/t3.png" width="150px" style="margin: 0 25px;"><br>
-      <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1073">徐锦</a>
+      <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1073" style="margin-top: 15px; display: inline-block;">徐锦</a>
     </td>
   </tr>
 </table>
-
-
 
 ### 助教
 
