@@ -74,19 +74,20 @@
 <table style="margin: auto;">
   <tr>
     <td align="center">
-      <img src="./t1.png" width="150px" style="margin: 0 25px;"><br>
+      <img src="pic/t1.png" width="150px" style="margin: 0 25px;"><br>
       <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1029">李彩</a>
     </td>
     <td align="center">
-      <img src="./t2.png" width="150px" style="margin: 0 25px;"><br>
+      <img src="pic/t2.png" width="150px" style="margin: 0 25px;"><br>
       <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1751">阮永森</a>
     </td>
     <td align="center">
-      <img src="./t3.png" width="150px" style="margin: 0 25px;"><br>
+      <img src="pic/t3.png" width="150px" style="margin: 0 25px;"><br>
       <a href="https://lifesciences.sysu.edu.cn/zh-hans/teacher/1073">徐锦</a>
     </td>
   </tr>
 </table>
+
 
 
 ### 助教
