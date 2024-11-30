@@ -40,6 +40,6 @@
 ```{toctree}
 :caption: 作业目录
 :maxdepth: 1
+:glob:
 
-task/task1.md
-task/task2.md
+assignments/*

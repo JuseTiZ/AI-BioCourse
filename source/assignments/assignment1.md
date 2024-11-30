@@ -6,5 +6,5 @@
 
 关于类的概念和实现可参考：[https://www.runoob.com/python3/python3-class.html](https://www.runoob.com/python3/python3-class.html)
 
-关于独热编码的概念和实现可参见[作业 2](task2.md)。
+关于独热编码的概念和实现可参见[作业 2](assignment2.md)。
 

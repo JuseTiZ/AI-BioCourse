@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>作业 1 &mdash; AI-BioCourse v0.1.0 文档</title>
+  <title>作业 3 &mdash; AI-BioCourse v0.1.0 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="作业 2" href="task2.html" />
-    <link rel="prev" title="课程作业" href="../task.html" /> 
+    <link rel="next" title="作业 4" href="assignment4.html" />
+    <link rel="prev" title="作业 2" href="assignment2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,9 +49,15 @@
               <p class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">课程介绍</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../task.html">课程作业</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">作业 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task2.html">作业 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../assignment.html">课程作业</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assignment1.html">作业 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assignment2.html">作业 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">作业 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">数据文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assignment4.html">作业 4</a></li>
 </ul>
 </li>
 </ul>
@@ -70,10 +76,10 @@
           <div role="navigation" aria-label="页面导航">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../task.html">课程作业</a></li>
-      <li class="breadcrumb-item active">作业 1</li>
+          <li class="breadcrumb-item"><a href="../assignment.html">课程作业</a></li>
+      <li class="breadcrumb-item active">作业 3</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/task/task1.md.txt" rel="nofollow"> 查看页面源码</a>
+            <a href="../_sources/assignments/assignment3.md.txt" rel="nofollow"> 查看页面源码</a>
       </li>
   </ul>
   <hr/>
@@ -82,19 +88,35 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>作业 1<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p>该作业的主要目的是熟悉 python 的基本操作，包括<strong>类的构建、实例化、重写</strong>及<strong>具体方法的实现</strong>。</p>
-<img src="..\_static\images\q1.png" height="400px" />
-<p>关于类的概念和实现可参考：<a class="reference external" href="https://www.runoob.com/python3/python3-class.html">https://www.runoob.com/python3/python3-class.html</a></p>
-<p>关于独热编码的概念和实现可参见<a class="reference internal" href="task2.html"><span class="std std-doc">作业 2</span></a>。</p>
+<h1>作业 3<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>该作业的主要目的是<strong>学习使用各种机器学习方法对指定生物学问题进行预测及模型评估，并初步了解和实现 PyTorch 的求导功能</strong>。</p>
+<img src="..\_static\images\q3.png" height="400px" />
+<p>在作业附件中，有提供数据文件 <code class="docutils literal notranslate"><span class="pre">Miao2020_ICB_response.tsv</span></code>，你可通过与<a class="reference internal" href="assignment2.html"><span class="std std-doc">作业二</span></a>相同的方式对其进行读取和后续处理。</p>
+<section id="id2">
+<h2>数据文件<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>该文件中需关注的列及其含义分别如下：</p>
+<ul class="simple">
+<li><p>第 2-26 列：指示病人的免疫细胞相关信息，为此次作业预测时需要用到的特征。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Response</span></code>：本次作业的预测目标，其中 R 表示响应，NR 表示不响应，在计算时可将 NR 视为 0（R 视为 1）。</p></li>
+</ul>
+<p>第一列 <code class="docutils literal notranslate"><span class="pre">Patient</span></code> 指示病人的编号，在后续的处理过程中可以将其 drop 掉。</p>
+</section>
+<section id="id3">
+<h2>参考材料<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>数据集的分割可参考：<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">scikit-learn train_test_split</a></p></li>
+<li><p>各种机器学习方法的实现以及交叉验证函数的使用可参考：<a class="reference external" href="https://scikit-learn.org/stable/api/index.html">scikit-learn API reference</a></p></li>
+<li><p>各种 metric 的计算对应函数可参考：<a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html">scikit-learn metrics</a></p></li>
+</ul>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="../task.html" class="btn btn-neutral float-left" title="课程作业" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="task2.html" class="btn btn-neutral float-right" title="作业 2" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="assignment2.html" class="btn btn-neutral float-left" title="作业 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="assignment4.html" class="btn btn-neutral float-right" title="作业 4" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
