@@ -4,7 +4,7 @@
 
 <img src="..\_static\images\q5.png" height="400px" />
 
-本次作业涉及的数据文件 `genotype_fitness_data.tsv`与[作业四](assignment4.md)相同。
+本次作业涉及的数据文件 `genotype_fitness_data.tsv` 与[作业四](assignment4.md)相同。
 
 #### 数据文件
 
